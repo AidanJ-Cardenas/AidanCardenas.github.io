@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidan J. Cardenas</title>
+    <style>
+        :root {
+            --accent-glow: #83dbf5;
+            --crimson: #c60002;
+        }
+
+        body {
+            background-color: #000;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: "aileron", sans-serif;
+        }
+
+        #loader-wrapper {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loader-content {
+            position: relative;
+            width: 60vw;
+            max-width: 450px;
+        }
+
+        .loader-logo {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* Initial state: Hidden by clip */
+            clip-path: inset(0 0 100% 0);
+            animation: scanIn 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            filter: drop-shadow(0 0 20px rgba(131, 219, 245, 0));
+        }
+
+        /* The Scan-In Effect */
+        @keyframes scanIn {
+            0% { clip-path: inset(0 0 100% 0); filter: brightness(2) contrast(2); }
+            100% { clip-path: inset(0 0 0% 0); filter: brightness(1) contrast(1); }
+        }
+
+        /* Subtle Static/Glitch Layer */
+        .loader-content::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(transparent 50%, rgba(131, 219, 245, 0.05) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .loader-text {
+            margin-top: 40px;
+            color: #4a4743;
+            font-size: 0.6rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Exit State: Triggered by JS */
+        .loader-exit {
+            opacity: 0 !important;
+        }
+
+        .loader-exit .loader-logo {
+            transform: scale(1.1);
+            filter: blur(20px) brightness(3) drop-shadow(0 0 30px var(--accent-glow));
+            transition: all 0.7s ease-in;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <img src="portfolio/logo/primary/silver.png" alt="AJC" class="loader-logo">
+        </div>
+        <div class="loader-text" id="status-text">System_Initialize</div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const wrapper = document.getElementById('loader-wrapper');
+            const status = document.getElementById('status-text');
+
+            // 1. Update text mid-way
+            setTimeout(() => {
+                status.innerText = "AIDAN J. CARDENAS";
+                status.style.color = "#d6d7d2"; 
+            }, 1500);
+
+            // 2. Start the Exit Animation
+            setTimeout(() => {
+                wrapper.classList.add('loader-exit');
+            }, 2600);
+
+            // 3. Redirect perfectly as the screen hits total black
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 3300);
+        });
+    </script>
+</body>
+</html>

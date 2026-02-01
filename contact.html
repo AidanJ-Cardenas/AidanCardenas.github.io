@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidan J. Cardenas - Contact</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wsq7zri.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="shortcut icon" href="portfolio/logo/icons/brandmark/silver.png" type="image/x-icon">
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Replace "YOUR_PUBLIC_KEY" with your actual key from EmailJS Account tab
+            emailjs.init("ZuelnGT93au5J-rrY");
+        })();
+    </script>
+</head>
+<body>
+    <canvas id="canvas-bg"></canvas>
+
+    <nav class="navbar">
+        <img src="portfolio/logo/secondary/silverNP.png" alt="Logo" class="logo">
+        <div class="nav-links">
+            <a href="home.html">
+                <figure>
+                    <img src="portfolio/logo/icons/home/home silver.svg" alt="home" class="iconsGrey" height="50px">
+                    <figcaption>HOME</figcaption>
+                </figure>
+            </a>
+            <a href="about.html">
+                <figure>
+                    <img src="portfolio/logo/icons/user/user silver.svg" alt="about me" class="iconsGrey" height="50px">
+                    <figcaption>ABOUT ME</figcaption>
+                </figure>
+            </a>
+            <a href="contact.html">
+                <figure>
+                    <img src="portfolio/logo/icons/contact/contact silver.svg" alt="contact" class="iconsGrey" height="50px">
+                    <figcaption>CONTACT</figcaption>
+                </figure>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="forms">
+        <form id="contactForm">
+            <div class="form-header">
+                <h2>SEND MESSAGE</h2>
+                <div class="status-indicator">
+                    <span class="dot"></span>
+                    <span class="status-text">SYSTEM ACTIVE</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="userName">Name</label>
+                <input type="text" id="userName" placeholder="Your Name" required>
+            </div>
+
+            <div class="input-group">
+                <label for="userEmail">Email Address</label>
+                <input type="email" id="userEmail" placeholder="your@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="userSubject">Subject</label>
+                <input type="text" id="userSubject" placeholder="Inquiry">
+            </div>
+
+            <div class="input-group">
+                <label for="userMessage">Message</label>
+                <textarea id="userMessage" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="button" id="submitBtn" onclick="sendEmail()">Initialize Email</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-brandmark">
+            <img src="portfolio/logo/icons/brandmark/silver.png" alt="AJC Brandmark">
+        </div>
+
+        <p>© 2026 Aidan J. Cardenas</p>
+
+        <div class="footer-links">
+            <a href="mailto:aidan.j.cardenas@outlook.com">EMAIL</a>
+            <a href="https://www.instagram.com/aidanj._cardenas/" target="_blank">INSTAGRAM</a>
+        </div>
+    </footer>
+
+    <script src="background.js"></script>
+    <script>
+        function sendEmail() {
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            
+            // Basic Validation
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const message = document.getElementById('userMessage').value;
+
+            if(!name || !email || !message) {
+                alert("Please fill in Name, Email, and Message.");
+                return;
+            }
+
+            btn.innerText = "SENDING...";
+            btn.style.opacity = "0.5";
+
+            const params = {
+                user_name: name,
+                user_email: email,
+                user_subject: document.getElementById('userSubject').value,
+                message: message
+            };
+
+            // Replace ServiceID and TemplateID with your IDs from EmailJS
+            emailjs.send("service_bkv15hh", "template_rqzrvu1", params)
+                .then(() => {
+                    btn.innerText = "MESSAGE SENT";
+                    btn.style.opacity = "1";
+                    btn.style.background = "#0d7991"; // Teal for success
+                    document.getElementById('contactForm').reset();
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = "var(--brand-gradient)";
+                    }, 4000);
+                })
+                .catch((err) => {
+                    alert("Failed to send. Check console for details.");
+                    console.error(err);
+                    btn.innerText = "ERROR";
+                    btn.style.opacity = "1";
+                });
+        }
+    </script>
+</body>
+</html>

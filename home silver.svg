@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 30 25.98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Silver);
+      }
+    </style>
+    <linearGradient id="Silver" x1="0" y1="12.99" x2="30" y2="12.99" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e5e2df"/>
+      <stop offset="0" stop-color="#ded9d6"/>
+      <stop offset=".06" stop-color="#cfcac8"/>
+      <stop offset=".18" stop-color="#a8a4a6"/>
+      <stop offset=".26" stop-color="#8b878d"/>
+      <stop offset=".52" stop-color="#f3f4f4"/>
+      <stop offset=".58" stop-color="#e4e5e5"/>
+      <stop offset=".7" stop-color="#bfbec0"/>
+      <stop offset=".86" stop-color="#847f84"/>
+      <stop offset=".88" stop-color="#807b80"/>
+      <stop offset="1" stop-color="#d1d3d4"/>
+      <stop offset="1" stop-color="#a7a9ac"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-1" d="M22.5,25.98H7.5L0,12.99,7.5,0h15l7.5,12.99-7.5,12.99ZM7.91,25.28h14.19l7.09-12.29L22.09.71H7.91L.81,12.99l7.09,12.29h0ZM15,5.2l-8.33,4.81v1.55h1.48v9.21h5.24v-6.69h3.22v6.69h5.24v-9.21h1.48v-1.55s-8.33-4.81-8.33-4.81Z"/>
+</svg>

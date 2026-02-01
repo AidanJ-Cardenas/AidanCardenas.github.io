@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidan J. Cardenas - About</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wsq7zri.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="shortcut icon" href="portfolio/logo/icons/brandmark/silver.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="portfolio/logo/secondary/silverNP.png" alt="Logo" class="logo">
+        <div class="nav-links">
+            <a href="home.html">
+                <figure>
+                    <img src="portfolio/logo/icons/home/home silver.svg" alt="home">
+                    <figcaption>HOME</figcaption>
+                </figure>
+            </a>
+            <a href="about.html">
+                <figure>
+                    <img src="portfolio/logo/icons/user/user silver.svg" alt="about">
+                    <figcaption>ABOUT ME</figcaption>
+                </figure>
+            </a>
+            <a href="contact.html">
+                <figure>
+                    <img src="portfolio/logo/icons/contact/contact silver.svg" alt="contact">
+                    <figcaption>CONTACT</figcaption>
+                </figure>
+            </a>
+        </div>
+    </nav>
+
+    <main class="about-container">
+        <section class="profile-section">
+            <div class="image-wrapper">
+                <img src="portfolio/photos/me.jpg" alt="Aidan J. Cardenas" class="profile-img">
+                <div class="glitch-layer crimson-glitch" style="background-image: url('portfolio/photos/your-photo.jpg');"></div>
+                <div class="glitch-layer teal-glitch" style="background-image: url('portfolio/photos/your-photo.jpg');"></div>
+            </div>
+            
+            <div class="bio-content">
+                <div class="content-header">
+                    <h2>PERSONNEL PROFILE</h2>
+                    <span class="id-tag">REF: AJC-2026</span>
+                </div>
+                <p>
+                    I am a creative developer and designer specialized in **Website Architecture**, 
+                    **Industrial UI Design**, and **Professional Photography**. My work merges 
+                    technical engineering with high-end visual storytelling.
+                </p>
+                <p>
+                    Whether I am writing clean, responsive code or capturing the sharp details 
+                    of a subject through a lens, I focus on the intersection of art and utility. 
+                    I strive to build digital environments that are as functional as they are visually striking, 
+                    using the <strong>Crimson & Teal</strong> framework to define my signature.
+                </p>
+                
+                <div class="action-area">
+                    <a href="assets/Aidan_Cardenas_Resume.pdf" download class="resume-btn">
+                        <span class="btn-text">DOWNLOAD RESUME</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-container">
+            <div class="content-header">
+                <h2>SYSTEM CAPABILITIES</h2>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>WEB DESIGN & DEV</span>
+                        <span class="percentage">95%</span>
+                    </div>
+                    <div class="progress-line"><span class="fill" data-width="95%"></span></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>PHOTOGRAPHY</span>
+                        <span class="percentage">92%</span>
+                    </div>
+                    <div class="progress-line"><span class="fill" data-width="92%"></span></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>UI/UX ARCHITECTURE</span>
+                        <span class="percentage">88%</span>
+                    </div>
+                    <div class="progress-line"><span class="fill" data-width="88%"></span></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>BRANDING</span>
+                        <span class="percentage">85%</span>
+                    </div>
+                    <div class="progress-line"><span class="fill" data-width="85%"></span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-brandmark">
+            <img src="portfolio/logo/icons/brandmark/silver.png" alt="AJC Brandmark">
+        </div>
+
+        <p>© 2026 Aidan J. Cardenas</p>
+
+        <div class="footer-links">
+            <a href="mailto:aidan.j.cardenas@outlook.com">EMAIL</a>
+            <a href="https://www.instagram.com/aidanj._cardenas/" target="_blank">INSTAGRAM</a>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.2 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.fill');
+                    fills.forEach(fill => {
+                        fill.style.width = fill.getAttribute('data-width');
+                    });
+                }
+            });
+        }, observerOptions);
+
+        // Start observing the skills container
+        observer.observe(document.querySelector('.skills-grid'));
+    </script>
+</body>
+</html>
